@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Peça sua comida favorita sem sair de casa. Os melhores restaurantes da sua região com entrega ultra rápida.",
       },
-      { property: "og:title", content: "BigSpinner — Delivery em minutos" },
+      { property: "og:title", content: "BigSpinner — Delivery de comida em minutos" },
       {
         property: "og:description",
         content: "Velocidade premium. Restaurantes de qualidade. Entrega rápida.",
@@ -87,6 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "BigSpinner" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0a0a0a" },
+      { name: "twitter:title", content: "BigSpinner — Delivery de comida em minutos" },
+      { name: "description", content: "A modern food delivery web application for ordering meals from local restaurants." },
+      { property: "og:description", content: "A modern food delivery web application for ordering meals from local restaurants." },
+      { name: "twitter:description", content: "A modern food delivery web application for ordering meals from local restaurants." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3bd2653f-13fa-46c0-a4ef-ecc3a1892dc2/id-preview-dcb33eba--6184f798-faba-4db1-b31c-21a67c272009.lovable.app-1778686447198.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3bd2653f-13fa-46c0-a4ef-ecc3a1892dc2/id-preview-dcb33eba--6184f798-faba-4db1-b31c-21a67c272009.lovable.app-1778686447198.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
