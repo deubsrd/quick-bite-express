@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Star, Clock, Bike, Heart, Share2, ArrowLeft } from "lucide-react";
-import { getRestaurantBySlug, brl } from "@/lib/data";
+import { getRestaurantBySlug, brl, type Dish } from "@/lib/data";
 import { DishCard } from "@/components/dish-card";
 
 export const Route = createFileRoute("/restaurantes/$slug")({
@@ -29,7 +29,9 @@ export const Route = createFileRoute("/restaurantes/$slug")({
 function RestaurantPage() {
   const { restaurant } = Route.useLoaderData();
 
-  const sections = Array.from(new Set(restaurant.menu.map((d) => d.section)));
+  const sections: string[] = Array.from(
+    new Set(restaurant.menu.map((d: Dish) => d.section))
+  );
 
   return (
     <div>
@@ -138,8 +140,8 @@ function RestaurantPage() {
                 <h2 className="text-2xl font-extrabold tracking-tight mb-5">{section}</h2>
                 <div className="grid md:grid-cols-2 gap-4">
                   {restaurant.menu
-                    .filter((d) => d.section === section)
-                    .map((d) => (
+                    .filter((d: Dish) => d.section === section)
+                    .map((d: Dish) => (
                       <DishCard
                         key={d.id}
                         dish={d}

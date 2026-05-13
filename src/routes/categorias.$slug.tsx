@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { categories, getRestaurantsByCategory } from "@/lib/data";
+import { categories, getRestaurantsByCategory, type Restaurant } from "@/lib/data";
 import { RestaurantCard } from "@/components/restaurant-card";
 
 export const Route = createFileRoute("/categorias/$slug")({
@@ -55,7 +55,7 @@ function CategoryPage() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {list.map((r) => (
+            {list.map((r: Restaurant) => (
               <RestaurantCard key={r.id} restaurant={r} />
             ))}
           </div>

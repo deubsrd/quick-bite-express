@@ -9,38 +9,167 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RestaurantesRouteImport } from './routes/restaurantes'
+import { Route as PedidosRouteImport } from './routes/pedidos'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RestaurantesSlugRouteImport } from './routes/restaurantes.$slug'
+import { Route as CategoriasSlugRouteImport } from './routes/categorias.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestaurantesRoute = RestaurantesRouteImport.update({
+  id: '/restaurantes',
+  path: '/restaurantes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PedidosRoute = PedidosRouteImport.update({
+  id: '/pedidos',
+  path: '/pedidos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RestaurantesSlugRoute = RestaurantesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => RestaurantesRoute,
+} as any)
+const CategoriasSlugRoute = CategoriasSlugRouteImport.update({
+  id: '/categorias/$slug',
+  path: '/categorias/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/checkout': typeof CheckoutRoute
+  '/pedidos': typeof PedidosRoute
+  '/restaurantes': typeof RestaurantesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/categorias/$slug': typeof CategoriasSlugRoute
+  '/restaurantes/$slug': typeof RestaurantesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/checkout': typeof CheckoutRoute
+  '/pedidos': typeof PedidosRoute
+  '/restaurantes': typeof RestaurantesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/categorias/$slug': typeof CategoriasSlugRoute
+  '/restaurantes/$slug': typeof RestaurantesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/checkout': typeof CheckoutRoute
+  '/pedidos': typeof PedidosRoute
+  '/restaurantes': typeof RestaurantesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/categorias/$slug': typeof CategoriasSlugRoute
+  '/restaurantes/$slug': typeof RestaurantesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/checkout'
+    | '/pedidos'
+    | '/restaurantes'
+    | '/sitemap.xml'
+    | '/categorias/$slug'
+    | '/restaurantes/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/checkout'
+    | '/pedidos'
+    | '/restaurantes'
+    | '/sitemap.xml'
+    | '/categorias/$slug'
+    | '/restaurantes/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/checkout'
+    | '/pedidos'
+    | '/restaurantes'
+    | '/sitemap.xml'
+    | '/categorias/$slug'
+    | '/restaurantes/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  CheckoutRoute: typeof CheckoutRoute
+  PedidosRoute: typeof PedidosRoute
+  RestaurantesRoute: typeof RestaurantesRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  CategoriasSlugRoute: typeof CategoriasSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restaurantes': {
+      id: '/restaurantes'
+      path: '/restaurantes'
+      fullPath: '/restaurantes'
+      preLoaderRoute: typeof RestaurantesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pedidos': {
+      id: '/pedidos'
+      path: '/pedidos'
+      fullPath: '/pedidos'
+      preLoaderRoute: typeof PedidosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +177,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/restaurantes/$slug': {
+      id: '/restaurantes/$slug'
+      path: '/$slug'
+      fullPath: '/restaurantes/$slug'
+      preLoaderRoute: typeof RestaurantesSlugRouteImport
+      parentRoute: typeof RestaurantesRoute
+    }
+    '/categorias/$slug': {
+      id: '/categorias/$slug'
+      path: '/categorias/$slug'
+      fullPath: '/categorias/$slug'
+      preLoaderRoute: typeof CategoriasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface RestaurantesRouteChildren {
+  RestaurantesSlugRoute: typeof RestaurantesSlugRoute
+}
+
+const RestaurantesRouteChildren: RestaurantesRouteChildren = {
+  RestaurantesSlugRoute: RestaurantesSlugRoute,
+}
+
+const RestaurantesRouteWithChildren = RestaurantesRoute._addFileChildren(
+  RestaurantesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  CheckoutRoute: CheckoutRoute,
+  PedidosRoute: PedidosRoute,
+  RestaurantesRoute: RestaurantesRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  CategoriasSlugRoute: CategoriasSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
