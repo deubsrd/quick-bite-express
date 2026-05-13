@@ -74,12 +74,6 @@ function HomePage() {
               </p>
               <p className="text-2xl lg:text-3xl font-extrabold font-mono">15-25 min</p>
             </div>
-            <div className="hidden lg:block absolute -top-4 -right-4 bg-card border border-border p-4 rounded-2xl shadow-card">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                Frete grátis
-              </p>
-              <p className="text-sm font-extrabold mt-0.5">Acima de {brl(40)}</p>
-            </div>
           </div>
         </div>
       </section>
@@ -88,7 +82,6 @@ function HomePage() {
       <section className="bg-brand text-brand-foreground py-3 overflow-hidden">
         <div className="flex gap-12 animate-pulse text-sm font-bold uppercase tracking-widest font-mono whitespace-nowrap justify-center">
           <span>● Cupom SPINNER10 — 10% OFF no primeiro pedido</span>
-          <span className="hidden md:inline">● Frete grátis até 22h</span>
           <span className="hidden lg:inline">● Cashback 5% no app</span>
         </div>
       </section>
